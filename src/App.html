@@ -1,0 +1,89 @@
+<div class="domains-zoneinfo-check-outer">
+    <form class="domains-zoneinfo-check form" action="" method="get">
+        <h2 class="domains-zoneinfo-check-title">Получите домен мечты</h2>
+        <div class="domains-zoneinfo-check-row form-error">
+            
+            <input id="id_zone_0" name="zone" type="hidden" value=".ru">
+            
+            <input autocomplete="off" class="domains-zoneinfo-check-field field-xlarge domains-zoneinfo-check-field-clone" id="" name="" placeholder="Домен для проверки" type="text" readonly="readonly">
+            <input autocomplete="off" class="domains-zoneinfo-check-field field-xlarge" id="id_domain" name="domain" placeholder="Домен для проверки" type="text">
+            <button class="button button-xlarge button-submit domains-zoneinfo-check-button" on:click="set({ send: 1, err: 1})">Проверить</button>
+        		<ul class="form-errors invisible"><li>Не удалось проверить доменное имя. Перезагрузите страницу и попробуйте еще раз.</li></ul>
+        </div>
+        <div class="domains-zoneinfo-hint">
+            
+                Например: example.ru
+            
+        </div>
+        <div class="domains-zoneinfo-naming">
+            <p>Имя домена может включать буквы и цифры, а также дефис, но дефис не должен быть
+в имени домена первым или последним (перед точкой).</p>
+            
+                Минимальная длина доменного имени — 2 символа.
+                Максимальная — 63 символа.
+            
+        </div>
+    </form>
+</div>
+
+<style>
+	.invisible {
+		display: none;
+	}
+</style>
+
+<script>
+	export default {
+		onstate({ changed, current, previous }) {
+			console.log('Моя хрень changed, current, previous ',changed, current, previous);
+			// this fires before oncreate, and on every state change.
+			// the first time it runs, `previous` is undefined
+			/*
+			if (changed.send && current.send === 1) {
+				//console.log(`time changed: ${previous && previous.time} -> ${current.time}`);
+				console.log('err хотим 1');
+				this.set({err: 1});
+			}
+			*/
+		},
+
+		/*
+		oncreate() {
+			// this fires when the component has been
+			// rendered to the DOM
+			console.log('in oncreate');
+
+			//this.interval = setInterval(() => {
+			//	this.set({ time: new Date() });
+			//}, 1000);
+		},
+
+		onupdate({ changed, current, previous }) {
+			// this fires after oncreate, and after every state change
+			// once the DOM is synchronised with the data
+			console.log(`The DOM has been updated`);
+		},
+
+		ondestroy() {
+			// this fires when the component is
+			// removed from the DOM
+			console.log('in ondestroy');
+
+			//clearInterval(this.interval);
+		},
+	*/
+		data() {
+			return {
+				err: 0,
+				send: 0
+			};
+		},
+/*
+		computed: {
+			hours:   ({ time }) => time.getHours(),
+			minutes: ({ time }) => time.getMinutes(),
+			seconds: ({ time }) => time.getSeconds()
+		}
+		*/
+	};
+</script>
